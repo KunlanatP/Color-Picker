@@ -266,7 +266,7 @@ class _HuePickerState extends State<HuePicker> {
 
   double _calculateSliderPercent(Offset localPosition) {
     final RenderBox box = context.findRenderObject() as RenderBox;
-    return (1.0 - (localPosition.dy / box.size.height)).clamp(0.0, 1.0);
+    return (1.0 - (localPosition.dx / box.size.width)).clamp(0.0, 1.0);
   }
 
   double _hueFromSliderPercent(double sliderPercent) {
@@ -281,29 +281,25 @@ class _HuePickerState extends State<HuePicker> {
         onPanUpdate: _onDragUpdate,
         child: Stack(
           children: [
-            ClipRRect(
-              borderRadius: const BorderRadius.all(Radius.circular(5)),
-              child: CustomPaint(
-                painter: HuePickerPainter(),
-                size: Size.infinite,
-              ),
+            CustomPaint(
+              painter: HuePickerPainter(),
+              size: Size.infinite,
             ),
-            _buildSelector(constraints.maxHeight),
+            _buildSelector(constraints.maxWidth),
           ],
         ),
       );
     });
   }
 
-  Widget _buildSelector(double height) {
+  Widget _buildSelector(double width) {
     final huePercent = widget.selectedHue / 360;
-
     return Align(
-      alignment: Alignment(0.0, 1.0 - (huePercent * 2)),
+      alignment: Alignment(1.0 - (huePercent * 2), 0.0),
       child: Container(
-        width: double.infinity,
-        height: 3,
-        color: Colors.white,
+        width: 3,
+        height: double.infinity,
+        color: Colors.black,
       ),
     );
   }
@@ -342,10 +338,10 @@ class HuePickerPainter extends CustomPainter {
         const HSVColor.fromAHSV(1.0, 306.0, 1.0, 1.0).toColor(),
         const HSVColor.fromAHSV(1.0, 360.0, 1.0, 1.0).toColor(),
       ],
-      begin: Alignment.bottomCenter,
-      end: Alignment.topCenter,
+      begin: Alignment.centerLeft,
+      end: Alignment.centerRight,
     ).createShader(Offset.zero & size);
-    // .createShader(Rect.fromLTWH(0,0,size.width, size.height));
+    // Offset.zero & size === Rect.fromLTWH(0,0,size.width, size.height)
 
     final paint = Paint()..shader = hueGradientShader;
 
