@@ -6,13 +6,15 @@ class WorkshopScaffold extends StatefulWidget {
     required this.hsvColor,
     required this.colorDisplay,
     required this.colorPickerBuilder,
-    required this.colorSliderBuilder,
+    required this.colorSliderHueBuilder,
+    required this.colorSliderAlphaBuilder,
   }) : super(key: key);
 
   final HSVColor hsvColor;
   final Widget colorDisplay;
   final Widget colorPickerBuilder;
-  final Widget colorSliderBuilder;
+  final Widget colorSliderHueBuilder;
+  final Widget colorSliderAlphaBuilder;
 
   @override
   _WorkshopScaffoldState createState() => _WorkshopScaffoldState();
@@ -53,10 +55,20 @@ class _WorkshopScaffoldState extends State<WorkshopScaffold> {
                     child: widget.colorDisplay,
                   ),
                   const SizedBox(width: 10),
-                  SizedBox(
-                    width: 245,
-                    height: 40,
-                    child: widget.colorSliderBuilder,
+                  Column(
+                    children: [
+                      SizedBox(
+                        width: 245,
+                        height: 20,
+                        child: widget.colorSliderHueBuilder,
+                      ),
+                      const SizedBox(height: 15),
+                      SizedBox(
+                        width: 245,
+                        height: 20,
+                        child: widget.colorSliderAlphaBuilder,
+                      ),
+                    ],
                   ),
                 ],
               ),
