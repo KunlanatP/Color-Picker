@@ -45,33 +45,33 @@ class _WorkshopScaffoldState extends State<WorkshopScaffold> {
                 height: 350,
                 child: widget.colorPickerBuilder,
               ),
-              const SizedBox(height: 10),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SizedBox(
-                    width: 75,
-                    height: 75,
-                    child: widget.colorDisplay,
-                  ),
-                  const SizedBox(width: 10),
-                  Column(
-                    children: [
-                      SizedBox(
-                        width: 245,
-                        height: 20,
-                        child: widget.colorSliderHueBuilder,
-                      ),
-                      const SizedBox(height: 15),
-                      SizedBox(
-                        width: 245,
-                        height: 20,
-                        child: widget.colorSliderAlphaBuilder,
-                      ),
-                    ],
-                  ),
-                ],
-              ),
+              // const SizedBox(height: 10),
+              // Row(
+              //   mainAxisAlignment: MainAxisAlignment.center,
+              //   children: [
+              //     SizedBox(
+              //       width: 75,
+              //       height: 75,
+              //       child: widget.colorDisplay,
+              //     ),
+              //     const SizedBox(width: 10),
+              //     Column(
+              //       children: [
+              //         SizedBox(
+              //           width: 245,
+              //           height: 20,
+              //           child: widget.colorSliderHueBuilder,
+              //         ),
+              //         const SizedBox(height: 15),
+              //         SizedBox(
+              //           width: 245,
+              //           height: 20,
+              //           child: widget.colorSliderAlphaBuilder,
+              //         ),
+              //       ],
+              //     ),
+              //   ],
+              // ),
             ],
           ),
         ),

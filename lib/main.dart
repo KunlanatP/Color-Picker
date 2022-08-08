@@ -52,12 +52,6 @@ class _WidgetWorkshopState extends State<WidgetWorkshop> {
         Container(
           width: double.infinity,
           color: _hsvColor.toColor(),
-          // decoration: BoxDecoration(
-          //   color: _hsvColor.toColor(),
-          //   // borderRadius: const BorderRadius.all(
-          //   //   Radius.circular(5),
-          //   // ),
-          // ),
         ),
       ],
     );

@@ -39,7 +39,9 @@ class _HuePickerState extends State<HuePicker> {
 
   double _calculateSliderPercent(Offset localPosition) {
     final RenderBox box = context.findRenderObject() as RenderBox;
-    return (1.0 - (localPosition.dx / box.size.width)).clamp(0.0, 1.0);
+    print('localPosition.dx ::: ${localPosition.dx}');
+    print(' ::: ${(localPosition.dx / box.size.width)}');
+    return (localPosition.dx / box.size.width).clamp(0.0, 1.0);
   }
 
   double _hueFromSliderPercent(double sliderPercent) {
@@ -68,7 +70,7 @@ class _HuePickerState extends State<HuePicker> {
   Widget _buildSelector(double width) {
     final huePercent = widget.selectedHue / 360;
     return Align(
-      alignment: Alignment(1.0 - (huePercent * 2), 0.0),
+      alignment: Alignment((huePercent * 2) - 1.0, 0.0),
       child: Container(
         width: 3,
         height: double.infinity,

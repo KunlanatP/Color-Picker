@@ -42,7 +42,7 @@ class _AlphaPickerState extends State<AlphaPicker> {
 
   double _calculateSliderPercent(Offset localPosition) {
     final box = context.findRenderObject() as RenderBox;
-    return (1.0 - (localPosition.dx / box.size.width)).clamp(0.0, 1.0);
+    return ((localPosition.dx / box.size.width)).clamp(0.0, 1.0);
   }
 
   double _alphaFromSliderPercent(double sliderPercent) {
@@ -74,7 +74,7 @@ class _AlphaPickerState extends State<AlphaPicker> {
   Widget _buildSelector(double width) {
     final huePercent = widget.selectedAlpha;
     return Align(
-      alignment: Alignment(1.0 - (huePercent * 2), 0.0),
+      alignment: Alignment((huePercent * 2) - 1.0, 0.0),
       child: Container(
         width: 3,
         height: double.infinity,
